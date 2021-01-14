@@ -1,0 +1,109 @@
+
+#fisrt word: le premier mot d'une chaine, qui peut commencer par un espace, des points, contenir des virgules qu'il faut enlever.
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    text = text.replace(',', ' ')
+    text = text.replace('.', ' ')
+    word = text.split()[0]
+    return word
+
+
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    res=''.join([car if not car in {',', '.'} else ' ' for car in text ])
+    return [x for x in res.split(' ') if x != ''][0]
+
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    x=text.replace('.',' ').replace(',',' ')    
+    y=x.split()[0]
+    return y
+
+#best solution:
+first_word = lambda text: text.replace(',', ' ').replace('.', ' ').split()[0] 
+
+
+def first_word(text: str) -> str:
+    while not text[0].isalpha():  # Removing the First INvalide Chars ( while text[0] == " " )
+        text = text[1:]
+    if "." in text:
+        text = text.replace("." , " ")
+    return "".join(list(filter(lambda char: char.isalpha() or char in "'" , [char for char in text.split(" ")[0]]))) 
+
+
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    line=text
+    for char in ' ... , ':
+        line=line.replace(char,' ')
+    r=line.split()
+    return r[0]
+
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    # your code here
+    modified = text.replace('.', ' ').replace(',', ' ').strip().split()
+    return modified[0]
+
+# Best solutions :
+import re
+
+
+def first_word(text: str) -> str:
+    return re.search("([\w']+)", text).group(1)
+
+m = re.match(r"(\d+)\.(\d+)", "27.1835")
+m.groups()
+
+
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    text = text.replace('.', ' ').replace(',', ' ').strip()
+    return text.split()[0]
+
+
+import re
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    return re.search("[a-zA-Z']+", text).group()
+
+
+import datetime 
+  
+# datetime(year, month, day, hour, minute, second) 
+a = datetime.datetime(2017, 6, 21, 18, 25, 30) 
+b = datetime.datetime(2017, 5, 16, 8, 21, 10) 
+  
+# returns a timedelta object 
+c = a-b  
+print('Difference: ', c) 
+  
+minutes = c.total_seconds() / 60
+print('Total difference in minutes: ', minutes) 
+  
+# returns the difference of the time of the day 
+minutes = c.seconds / 60
+print('Difference in minutes: ', minutes) 
+
+datetime.datetime(b)-datetime.datetime(a).days

@@ -1,0 +1,149 @@
+#my code:
+def between_markers(text: str, begin: str, end: str) -> str:
+    return text[text.index(begin)+1:text.index(end)]
+    
+    
+between_markers('What is >apple<', '>', '<')
+between_markers('What is [apple]', '[', ']')
+between_markers('What is ><', '>', '<')
+between_markers('>apple<', '>', '<')
+
+
+#other solutions:
+
+def between_markers(text: str, begin: str, end: str) -> str:
+    """
+        returns substring between two given markers
+    """
+    # your code here
+    return text[text.find(begin)+1:text.find(end)]
+
+
+def between_markers(text: str, begin: str, end: str) -> str:
+    ready = text.find(begin)
+    done = text.find(end)
+    if ready > done: 
+        return ''
+    else:
+         
+        for letters in text:
+            letters = text[ready + 1:done]
+            return letters
+
+
+
+def between_markers(text: str, begin: str, end: str) -> str:
+    start_char = text.index(begin) + len(begin)if begin in text else 0
+    end_char = text.index(end) if end in text else len(text)
+    return text[start_char:end_char]
+
+
+
+##################################
+
+#my code
+def correct_sentence(text: str) -> str:
+ 
+    return text[0].upper()+ text[1:] if text[-1]=="." else text[0].upper()+ text[1:] +"."
+
+
+if __name__ == '__main__':
+    print("Example:")
+    print(correct_sentence("greetings, friends"))
+    
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert correct_sentence("greetings, friends") == "Greetings, friends."
+    assert correct_sentence("Greetings, friends") == "Greetings, friends."
+    assert correct_sentence("Greetings, friends.") == "Greetings, friends."
+    assert correct_sentence("hi") == "Hi."
+    assert correct_sentence("welcome to New York") == "Welcome to New York."
+
+#other solutions:
+
+
+def correct_sentence(text: str) -> str:
+    if not text[-1] == '.':
+        text = text + '.'
+    return text[0].upper() + text[1:]
+
+
+def correct_sentence(text: str) -> str:
+    """
+        returns a corrected sentence which starts with a capital letter
+        and ends with a dot.
+    """
+    if text[-1] == '.':
+        text = text
+    else:
+        text = text + '.'
+    # your code here
+    return text[0].upper() + text[1:]
+
+
+def correct_sentence(text: str) -> str:
+    """
+        returns a corrected sentence which starts with a capital letter
+        and ends with a dot.
+    """
+    # your code here
+    a = list(text)
+    a[0] = a[0].upper()
+    if a[len(a)-1] != '.':
+        a.append('.')
+    b = ''.join(a)
+    return b
+
+
+
+def correct_sentence(text: str) -> str:
+    """
+        returns a corrected sentence which starts with a capital letter
+        and ends with a dot.
+    """
+    # your code here
+    if text[0].islower():
+        text = text[0].upper() + text[1:]
+    if text[-1] != '.':
+        text = text + '.'
+    return text
+
+
+def correct_sentence(text: str) -> str:
+    """
+        returns a corrected sentence which starts with a capital letter
+        and ends with a dot.
+    """
+    return text[0].upper() + text[1:].rsplit('.')[0] + '.'
+
+
+def correct_sentence(text: str) -> str:
+    """
+        returns a corrected sentence which starts with a capital letter
+        and ends with a dot.
+    """
+    t = text[0].upper() + text[1:-1] + text[-1]
+    if t[-1] != '.':
+        t = t + '.'
+    return t
+
+#My code:
+def is_even(num: int) -> bool:
+    # your code here
+    return num%2 ==0
+
+other solutions:
+def is_even(num: int) -> bool:
+    if num == 0 or num % 2 == 0:
+        return True
+    else:
+        return False
+
+
+def is_even(num: int) -> bool:
+    return not (num & 1)
+
+
+
+
+
+
